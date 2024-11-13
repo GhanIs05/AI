@@ -8,10 +8,13 @@ class Graph:
         self.graph[u].append(v)
 
     def BFS(self, s):
-        visited = [False] * (max(self.graph) + 1)
+        if self.graph:
+            visited = [False] * (max(self.graph) + 1)
+        else:
+            print("Graph is empty.")
+            return
 
         queue = []
-
         queue.append(s)
         visited[s] = True
 
@@ -24,13 +27,16 @@ class Graph:
                     queue.append(i)
                     visited[i] = True
 
-g = Graph()
-g.addEdge(0, 1)
-g.addEdge(0, 2)
-g.addEdge(1, 2)
-g.addEdge(2, 0)
-g.addEdge(2, 3)
-g.addEdge(3, 3)
+    def addEdges(self):
+        num_edges = int(input("Enter the number of edges: "))
+        
+        for _ in range(num_edges):
+            u, v = map(int, input("Enter edge (u v): ").split())
+            self.addEdge(u, v)
 
-print("Following is Breadth First Traversal (starting from vertex 2)")
-g.BFS(2)
+g = Graph()
+g.addEdges()
+
+start_vertex = int(input("Enter the starting vertex for BFS: "))
+print("Following is Breadth First Traversal:")
+g.BFS(start_vertex)
