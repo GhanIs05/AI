@@ -45,7 +45,6 @@ def monkey_banana_bfs(initial_state):
         if current_state["has_banana"]:
             return path
 
-        # Define possible actions
         actions = [
             ("move to middle", move(current_state, "middle")),
             ("move to corner", move(current_state, "corner")),
@@ -54,7 +53,6 @@ def monkey_banana_bfs(initial_state):
             ("grab banana", grab_banana(current_state))
         ]
 
-        # Explore each action
         for action, new_state in actions:
             if new_state != current_state:
                 queue.append((new_state, path + [action]))
