@@ -23,12 +23,14 @@ class Graph:
                         stack.append(neighbour)
 
 g = Graph()
-g.addEdge(0, 1)
-g.addEdge(0, 2)
-g.addEdge(1, 2)
-g.addEdge(2, 0)
-g.addEdge(2, 3)
-g.addEdge(3, 3)
 
-print("Following is DFS from (starting from vertex 2)")
-g.DFS(2)
+num_edges = int(input("Enter the number of edges: "))
+print("Enter the edges in the format 'u v':")
+for _ in range(num_edges):
+    u, v = map(int, input().split())
+    g.addEdge(u, v)
+
+start_vertex = int(input("Enter the starting vertex for DFS: "))
+
+print(f"Following is DFS starting from vertex {start_vertex}")
+g.DFS(start_vertex)
